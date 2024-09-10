@@ -60,7 +60,7 @@ public class TimeService extends Service {
                 long hours = (elapsedTime / 3600000) % 24;
                 long minutes = (elapsedTime / 60000) % 24;
                 long sec = (elapsedTime / 1000) % 24;
-                Notification notification = createNotification(String.format("Time: %0.2d:%0.2d", hours, minutes, sec));
+               // Notification notification = createNotification(String.format("Time: %0.2d:%0.2d", hours, minutes, sec));
                 // startForeground(1, notification);
                 Log.i("ServiceLog", "run: " + hours + " " + minutes + " " + sec);
                 if (elapsedTime < 60 * 1000) {
@@ -76,16 +76,16 @@ public class TimeService extends Service {
         handler.post(runnable);
     }
 
-    private Notification createNotification(String contextText) {
-        Intent notificationIntent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-        return new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Service Test")
-                .setContentText(contextText)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentIntent(pendingIntent)
-                .build();
-
-    }
+//    private Notification createNotification(String contextText) {
+//        Intent notificationIntent = new Intent(this, MainActivity.class);
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+//        return new NotificationCompat.Builder(this, CHANNEL_ID)
+//                .setContentTitle("Service Test")
+//                .setContentText(contextText)
+//                .setSmallIcon(R.drawable.ic_launcher_foreground)
+//                .setContentIntent(pendingIntent)
+//                .build();
+//
+//    }
 
 }
